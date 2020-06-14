@@ -21,3 +21,19 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train.reshape(-1,1))"""
+
+
+# Ecode catigorical Data
+
+# labelEncoder
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+X[:, 2] = le.fit_transform(X[:,2])
+
+#OneHotEncoding
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [1])])
+X = np.array(ct.fit_transform(X))
+
